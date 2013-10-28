@@ -1,0 +1,26 @@
+{
+    "name": "lkt-processor",
+    "version": "0.0.1",
+    "description": "Message processor framework based on AMQP service",
+    "author": {
+        "name": "abbish"
+    },
+    "main": "lkt-processor",
+    "repository": {
+        "type" : "git",
+        "url" : "https://github.com/abbish/lkt-processor.git"
+    },
+    "dependencies": {
+        "amqp": "*",
+        "log4js": "*",
+        "qooxdoo": "*",
+        "underscore": "*",
+        "commander": "*"
+    },
+    "devDependencies": {
+        "grunt": "*",
+        "grunt-contrib-jshint": "*",
+        "grunt-contrib-nodeunit": "*",
+        "grunt-contrib-uglify": "*"
+    }
+}
