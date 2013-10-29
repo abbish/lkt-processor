@@ -1,6 +1,7 @@
 var init = require('../init');
 var qx = require('qooxdoo');
 var underscore = require('underscore');
+var fs = require('fs');
 var abstract = require(init.path.lib + '/abstract');
 
 qx.Class.define('LKTProcessor', {
@@ -16,7 +17,14 @@ exports.run = function(LKTMessage) {
     }
 
     var pname = LKTMessage.getProcessor();
-    var processor = require('lkt-processor-' + pname);
+    var pfile = init.path.processor + '/' + pname + '.js';
+
+    if(!fs.existsSync(pfile))
+    {
+        throw new Error('Processor file `'+ pfile +'` cannot be found');
+    }
+
+    var processor = require(init.path.processor + '/' + pname);
 
     var p = new LKTProcessor(LKTMessage.getData());
 

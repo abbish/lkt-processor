@@ -2,12 +2,12 @@ var init = require('../init');
 var log4js = require('log4js');
 var underscore = require('underscore');
 var mkdirp = require('mkdirp');
-var path = require('path');
+var fs = require('fs');
 
-path.existsSync(init.path.logs, function(exists) {
-
+if(!fs.existsSync(init.path.logs))
+{
     mkdirp(init.path.logs);
-});
+}
 
 log4js.configure(require(init.path.config + '/log.js'));
 

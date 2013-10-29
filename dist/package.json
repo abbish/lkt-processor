@@ -1,9 +1,10 @@
 {
     "name": "lkt-processor",
-    "version": "0.0.1",
-    "description": "Message processor framework based on AMQP service",
+    "version": "0.0.2",
+    "description": "A message process framework based on AMQP service component (e.g RabbitMQ)",
     "author": {
-        "name": "abbish"
+        "name": "abbish",
+        "email": "me@abbish.com"
     },
     "main": "lkt-processor",
     "repository": {
