@@ -3,32 +3,40 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        concat: {
-            options: {
-                stripBanners: true,
-                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-                    '<%= grunt.template.today("yyyy-mm-dd") %> */'
-            },
+        clean: {
             dist: {
-                'dist/package.json': 'src/package.json',
-                'dist/README.md': 'src/README.md',
-                'dist/LICENSE': 'src/LICENSE',
-                'dist/*.js': 'src/*.js',
-                'dist/lib/*.js': 'src/lib/*.js',
-                'dist/config/*.js': 'src/config/*.js'
-
+                src: ['dist']
             }
         },
-        clean: {
-            logs: {
-                src: 'src/logs/**/*',
-                filter: 'isFile'
+        copy: {
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/',
+                        src: '**',
+                        dest: 'dist/'
+                    },
+                    {
+                        src: 'package.json',
+                        dest: 'dist/'
+                    },
+                    {
+                        src: 'README.md',
+                        dest: 'dist/'
+                    },
+                    {
+                        src: 'LICENSE',
+                        dest: 'dist/'
+                    }
+                ]
             }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('dist', ['concat:dist']);
+    grunt.registerTask('default', ['clean:dist', 'copy:dist']);
 
-};
+}
